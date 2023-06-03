@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laptop</title>
+    <!-- Link bootstrap CDN untuk menggunakan bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <!-- css internal untuk mengatur design dari halaman -->
+    <style>
+        .container{
+            width: 400px;
+            height: 390px;
+            box-shadow: 0px 10px 15px -3px rgba(0,0,0,0.1),0px 10px 15px -3px rgba(0,0,0,0.1),0px 10px 15px -3px rgba(0,0,0,0.1);
+            margin-top: 210px;
+            padding: 25px;
+            border-radius: 15px;
+            background-color: white;
+        }
+        body{
+            background-image: url('https://media.istockphoto.com/id/1094721986/vector/abstract-of-pink-living-coral-color-sky-background.jpg?s=612x612&w=0&k=20&c=dGDrG_m4WNfCFAcYRFBSrIcS2QnhLlzIs1FDGqkjnG8=');
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            height: 100vh;
+        }
+    </style>
+    <script>
+       // Document ready adalah sebuah event dari JQuery yang mana akan langsung dieksekusi
+       //ketika mengakses sebuah website dimana berisikan semua request get menggunakan ajax
+        $(document).ready(function(){
+            $.ajax({
+                type:'GET',
+                url:'/siap?name=Yasmin Nadhifa',
+                data:{},
+                success: function(response){
+                    alert(response['name']+ ' Siap mengikuti pretes')
+                }
+            })
+        })
+    </script>
+</head>
+
+<body>
+     <!-- div dengan class container yang membungkus semua tag  -->
+    <div class="container">
+        <!-- div dengan class wrapper untuk membungkus tag h2 dan tag form -->
+        <div class="wrapper">
+            <h2 class="d-flex justify-content-center">Pembelian Laptop</h2>
+        <!-- Tag form dengan atribut method post dan action "/" akan mengirimkan data ke server dengan route "/" 
+        data yang dikirimkan adalah value dari attribut name pada tag input-->
+        <!-- Kalau mau menggunakan cara di app.py maka action harus /keranjang, kalau 
+        menggunakan cara di app2.py maka action harus / saja -->
+            <form action="/" method="POST">
+                <div class="mb-3">
+                    <!-- merek, processor, ukuran layar  -->
+        <!-- sebuah tag input dengan type text yang menerima inputan karakter dimana terdapat 
+          attribute name yang akan menentukan spesifikasi dari nama sebuah form, 
+          sebagai referensi form data setelah form disubmit -->
+                  <label class="form-label">Merk Laptop</label>
+                  <input type="text" class="form-control" name="merk" >
+                </div>
+                <div class="mb-3">
+                  <label class="form-label">Processor</label>
+                  <input type="text" class="form-control" name="pro">
+                </div>
+                <div class="mb-3">
+                    <label class="form-label">Ukuran Layar</label>
+                    <input type="text" class="form-control" name="ukuran">
+                  </div>
+                  <!-- sebuah tag button berwarna merah yang akan mengirimkan form data ke server ketika ditekan -->
+                <button type="submit" class="btn btn-danger">Submit</button>
+              </form>
+        <!-- akhir dari tag div dengan class wrapper -->
+        </div>
+        <!-- akhir dari tag div dengan class container -->
+    </div>
+</body>
+</html>
